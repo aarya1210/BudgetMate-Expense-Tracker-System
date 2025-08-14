@@ -1,143 +1,65 @@
-# 💸 Smart Expense Tracker
+💸 BudgetMate – Expense Tracker System
 
-[![Java](https://img.shields.io/badge/Built%20With-Java-blue.svg)](https://www.java.com/)
-[![MySQL](https://img.shields.io/badge/Database-MySQL-orange.svg)](https://www.mysql.com/)
-[![UI](https://img.shields.io/badge/UI-Java%20Swing-green.svg)](https://docs.oracle.com/javase/tutorial/uiswing/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+BudgetMate is a desktop-based expense tracking application developed in Java Swing with MySQL as the database.
+It helps users record, categorize, and analyze their income and expenses efficiently.
+With an easy-to-use interface and powerful analytics, BudgetMate makes personal finance management simple and effective.
 
-Smart Expense Tracker is a desktop application built with Java Swing and MySQL that lets you record, categorize, and analyze income and expenses. Features include category management with colors, transaction filtering & search, year-wise analytics with bar charts (JFreeChart), and a customizable FlatLaf theme for a modern UI.
+🚀 Features
 
----
+User Authentication – Secure login and registration for multiple users.
 
-## 📷 Preview
+Income & Expense Management – Add, edit, delete, and search transactions.
 
-![Login Page](assets/login.png)  
-_User login screen._  
+Category Management – Create, update, and delete categories with custom names and colors.
 
-![Register Page](assets/register.png)  
-_New user registration form._  
+Transaction Filtering & Search – Filter transactions by date, category, or keywords.
 
-![Home Page](assets/homepage.png)  
-_Main dashboard with theme customization using FlatLaf.
-Easily switch between themes via the dropdown, alongside quick navigation to core features._  
+Year-wise Analytics – Visual representation of income and expenses using bar charts.
 
-![Add Expense Page](assets/addexpense.png)  
-_Form to add a new income or expense entry._  
+Customizable Themes – FlatLaf-based modern UI themes.
 
-![Transactions Page](assets/transactions.png)  
-_Page showing a list of all income/expense transactions with filter, search, update and delete transactions features._  
+Database Integration – MySQL for reliable data storage.
 
-![Analytics Page](assets/Analytics.png)  
-_Analytics view with month-wise income and expense bar chart. Also you can filter by year._  
+🛠️ Technologies Used
 
-![Create Category Page](assets/createcategory.png)  
-_Form to create a new category with a name and color._  
+Java (Swing for UI)
 
-![Manage Categories Page](assets/managecategory.png)  
-_View, edit, or delete existing categories._  
+MySQL (Database)
+
+JDBC (Database Connectivity)
+
+JFreeChart (Data Visualization)
+
+FlatLaf (Custom UI Themes)
+
+📂 Project Structure
+BudgetMate-Expense-Tracker-System/
+│
+├── src/                  # Java source code
+├── database/             # SQL scripts for database setup
+├── lib/                  # Required JAR dependencies
+├── assets/               # UI assets and icons
+├── README.md              # Project documentation
+└── LICENSE                # License file
+
+⚙️ Installation & Setup
+
+Clone the repository
+
+git clone https://github.com/aarya1210/BudgetMate-Expense-Tracker-System.git
+cd BudgetMate-Expense-Tracker-System
 
 
----
+Set up the database
 
-## 🧠 Features
+Import the SQL file from the database/ folder into MySQL.
 
-- ✅ User Registration & Secure Login
-- ✅ Add/Edit/Delete Transactions
-- ✅ Manage Custom Categories (Name + Color)
-- ✅ Income/Expense Summary Panel
-- ✅ Real-time Minimum Balance Warning
-- ✅ Monthly Analytics with Bar Charts (via JFreeChart)
-- ✅ Filter & Search Transactions by Type/Keyword
-- ✅ Clean, intuitive Swing UI with modern layout
+Update database credentials in the Java code (usually in DBConnection.java).
 
----
+Add dependencies
 
-## 🗃️ Tech Stack
+Ensure required JAR files (JFreeChart, FlatLaf, MySQL Connector) are in the lib/ folder and added to the project.
 
-| Layer        | Technology             |
-|-------------|------------------------|
-| 💻 Language  | Java (JDK 17+)         |
-| 🖥️ UI       | Java Swing (AWT/Swing) |
-| 🗄️ Database | MySQL 8.x              |
-| 📊 Charts   | JFreeChart              |
+Run the application
 
----
-
-## ⚙️ Database Schema
-
-### 🔐 `users` Table
-```sql
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  email VARCHAR(100),
-  password VARCHAR(100) NOT NULL
-);
-```
-### 🗂️  `categories` Table
-```sql
-CREATE TABLE categories (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  name VARCHAR(50) NOT NULL,
-  color VARCHAR(7) NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
-```
-### 💳 `transactions` Table
-```sql
-CREATE TABLE transactions (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
-  category_name VARCHAR(50) NOT NULL,
-  description VARCHAR(255),
-  amount DECIMAL(10,2) NOT NULL,
-  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  type ENUM('income','expense') NOT NULL DEFAULT 'expense'
-);
-```
-
-## 🚀 Getting Started
-
-### 1. Clone the Repo
-```bash
-git clone https://github.com/thisisAtharv/ExpenseTracker.git
-cd ExpenseTracker
-```
-### 2. Configure MySQL
-- Create a database: expense_tracker
-- Run the provided SQL script (schema.sql) or create tables manually (see above)
-### 3. Update DB Credentials
-Open your relevant .java files and update the database connection info:
-```java
-String url = "jdbc:mysql://localhost:3306/expense_tracker";
-String user = "root";
-String password = "your_password";
-```
-### 4. Build & Run
-- Compile the project using your IDE (e.g., IntelliJ, Eclipse) or the terminal
-- Run the Main.java or Login.java class to launch the application
-
-## 📂 Project Structure
-```bash
-src/
-├── db/
-│   └── DBConnection.java
-├── model/
-│   ├── AddExpense.java
-│   ├── Analytics.java
-│   ├── Category.java
-│   ├── CreateCategory.java
-│   ├── Home.java
-│   ├── LoginPage.java
-│   ├── RegisterPage.java
-│   ├── ViewCategory.java
-│   └── ViewExpense.java
-```
-
-## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙌 Acknowledgements
-- [Java Swing Documentation – Oracle](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)
-- [JFreeChart – Official Site](http://www.jfree.org/jfreechart/)
+Compile and run the Main.java file.
