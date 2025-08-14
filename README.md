@@ -42,24 +42,22 @@ BudgetMate-Expense-Tracker-System/
 ├── README.md              # Project documentation
 └── LICENSE                # License file
 
+
 ⚙️ Installation & Setup
 
-Clone the repository
-
-git clone https://github.com/aarya1210/BudgetMate-Expense-Tracker-System.git
-cd BudgetMate-Expense-Tracker-System
-
-
-Set up the database
+Set Up the Database
 
 Import the SQL file from the database/ folder into MySQL.
 
-Update database credentials in the Java code (usually in DBConnection.java).
+Update the database username and password in the Java code (e.g., DBConnection.java).
 
-Add dependencies
+Add Dependencies
 
-Ensure required JAR files (JFreeChart, FlatLaf, MySQL Connector) are in the lib/ folder and added to the project.
+Make sure required JAR files (JFreeChart, FlatLaf, MySQL Connector) are in the lib/ folder.
 
-Run the application
+Add them to your project classpath.
 
-Compile and run the Main.java file.
+Run the Application
+
+Compile and run Main.java.
+
